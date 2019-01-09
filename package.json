@@ -4,7 +4,8 @@
   "description": "sports-shore-server",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon",
+    "test": "mocha"
   },
   "author": "Brian Thomas",
   "license": "ISC",
