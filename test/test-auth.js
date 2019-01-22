@@ -20,11 +20,11 @@ function handleError(err) {
 
 describe("Auth endpoints", function() {
   let id = null;
-  const username = "exampleUser";
-  const password = "examplePass";
-  const screenName = "eUser";
-  const firstName = "Example";
-  const lastName = "User";
+  const username = "User";
+  const password = "Password";
+  const screenName = "ExampleUser";
+  const firstName = "FirstNameExample";
+  const lastName = "LastNameExample";
 
   before(function() {
     return runServer(TEST_DATABASE_URL);

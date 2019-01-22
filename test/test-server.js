@@ -1,19 +1,24 @@
+"use strict";
+
 const chai = require("chai");
 const chaiHttp = require("chai-http");
+const mongoose = require("mongoose");
+const expect = chai.expect;
 
-const { app } = require("../server");
+const { app, runServer, closeServer } = require("../server");
+const { User } = require("../users/models");
+const { TEST_DATABASE_URL } = require("../config");
 
-const should = chai.should();
 chai.use(chaiHttp);
 
-describe("API", function() {
-  it("should 200 on GET requests", function() {
+//Test Static
+describe("Static assets", function() {
+  it("GET to / should return status 200", function() {
     return chai
       .request(app)
-      .get("/api/fooooo")
+      .get("/")
       .then(function(res) {
-        res.should.have.status(200);
-        res.should.be.json;
+        expect(res).to.have.status(404);
       });
   });
 });

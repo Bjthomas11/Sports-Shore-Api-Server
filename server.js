@@ -3,13 +3,13 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 const cors = require("cors");
+const { PORT, DATABASE_URL, CLIENT_ORIGIN } = require("./config");
 const { Teams } = require("./models");
 const passport = require("passport");
+const path = require("path");
 const { router: usersRouter } = require("./users");
 const { router: authRouter, localStrategy, jwtStrategy } = require("./auth");
-
 mongoose.Promise = global.Promise;
 
 app.use(express.static("public"));
@@ -28,10 +28,7 @@ app.use("/api/auth/", authRouter);
 
 const jwtAuth = passport.authenticate("jwt", { session: false });
 
-// END POINTS
-app.use("*", function(req, res) {
-  res.status(404).json({ message: "Not Found" });
-});
+// Endpoints
 
 app.get("/teams", (req, res) => {
   Teams.find()
@@ -40,8 +37,8 @@ app.get("/teams", (req, res) => {
         teams: teams.map(team => team.serialize())
       });
       let teamsForNews = teams[0].team.toString();
-      let teamsForNewsString = teamsForNews.replace(/,/g, " OR ");
-      console.log(teamsForNewsString);
+      let dataTeams = teamsForNews.replace(/,/g, " & ");
+      console.log(dataTeams);
     })
     .catch(err => {
       console.error(err);
