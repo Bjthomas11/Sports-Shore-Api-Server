@@ -9,6 +9,7 @@ const { JWT_SECRET, TEST_DATABASE_URL } = require("../config");
 const expect = chai.expect;
 
 chai.use(chaiHttp);
+``;
 
 function handleError(err) {
   if (err instanceof chai.AssertionError) {
