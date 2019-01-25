@@ -142,11 +142,11 @@ app.delete("/teams/:id", (req, res) => {
 // SERVER
 let server;
 
-function runServer(databaseUrl, port = PORT) {
+function runServer(DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.set("useCreateIndex", true);
     mongoose.connect(
-      databaseUrl,
+      DATABASE_URL,
       { useNewUrlParser: true },
       err => {
         if (err) {
