@@ -4,7 +4,7 @@
   "description": "sports-shore-server",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon",
+    "start": "node",
     "test": "mocha"
   },
   "author": "Brian Thomas",
